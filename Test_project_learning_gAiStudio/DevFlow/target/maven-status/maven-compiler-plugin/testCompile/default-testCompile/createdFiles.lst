@@ -1,0 +1,5 @@
+com/devflow/service/TaskServiceTest.class
+com/devflow/service/AuthServiceTest.class
+com/devflow/controller/AuthControllerTest.class
+com/devflow/service/ProjectServiceTest.class
+com/devflow/controller/ProjectControllerTest.class

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/LoadBalancer_lab" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MiniAWS_ObjectStorageSystem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Overclock" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Projects/movie-reccomendation-system" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backendService" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git_github_actions" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/satquery-ai" vcs="Git" />
+  </component>
+</project>

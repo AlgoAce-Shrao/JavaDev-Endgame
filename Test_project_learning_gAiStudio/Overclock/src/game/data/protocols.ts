@@ -1,0 +1,75 @@
+import { ExperimentalProtocolDef } from '../types';
+
+export const EXPERIMENTAL_PROTOCOLS: ExperimentalProtocolDef[] = [
+  {
+    id: 'MELTDOWN_PROTOCOL',
+    code: 'PROT-01',
+    name: 'THERMAL SURGE',
+    description: 'Bypasses internal coolant regulators to maximize offensive yield at catastrophic thermal costs.',
+    riskRewardDesc: '+75% Overclock Damage, +50% Heat Generated per shot',
+    scoreMultiplier: 1.35,
+    icon: 'Flame',
+    unlockedByDefault: true,
+    modifiers: {
+      heatGenerationMult: 1.5,
+      overclockDamageMult: 1.75,
+    },
+  },
+  {
+    id: 'GLASS_CORE',
+    code: 'PROT-02',
+    name: 'GLASS CANNON',
+    description: 'Strips protective chassis plating to divert all auxiliary power into hyper-thrusters and weaponry.',
+    riskRewardDesc: '-50% Max Hull / Shield, +30% Thruster Speed, +40% Weapon Damage',
+    scoreMultiplier: 1.5,
+    icon: 'Zap',
+    unlockedByDefault: true,
+    modifiers: {
+      playerMaxHpMult: 0.5,
+      playerSpeedMult: 1.3,
+      overclockDamageMult: 1.4,
+    },
+  },
+  {
+    id: 'UNREGULATED_OVERCLOCK',
+    code: 'PROT-03',
+    name: 'INFINITE RESONANCE',
+    description: 'Permanently locks the Overclock governor valve. Massive Overclock duration, but natural cooling is sluggish.',
+    riskRewardDesc: '+100% Overclock Duration, -40% Cooling Rate',
+    scoreMultiplier: 1.4,
+    icon: 'Clock',
+    unlockedByDefault: false,
+    modifiers: {
+      overclockDurationMult: 2.0,
+      coolingRateMult: 0.6,
+      unregulatedOverclock: true,
+    },
+  },
+  {
+    id: 'CHAOS_ANOMALIES',
+    code: 'PROT-04',
+    name: 'QUANTUM CHAOS',
+    description: 'Injects hostile overclock firmware into all automated security units.',
+    riskRewardDesc: '+35% Enemy Health & Speed, +80% Score & Double Cyber Credits',
+    scoreMultiplier: 1.8,
+    icon: 'Activity',
+    unlockedByDefault: false,
+    modifiers: {
+      enemyHpMult: 1.35,
+      enemySpeedMult: 1.35,
+    },
+  },
+  {
+    id: 'ONE_SHOT_LETHALITY',
+    code: 'PROT-05',
+    name: 'ONE-SHOT PROTOCOL',
+    description: 'Critical containment instability. Any standard damage is fatal to non-boss entities and the operator.',
+    riskRewardDesc: 'Instant Death for Standard Targets & Operator. High Risk / Highest Reward.',
+    scoreMultiplier: 2.5,
+    icon: 'Skull',
+    unlockedByDefault: false,
+    modifiers: {
+      oneShotMode: true,
+    },
+  },
+];

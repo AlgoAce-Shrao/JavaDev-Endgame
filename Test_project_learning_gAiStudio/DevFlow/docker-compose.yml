@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  devflow-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devflow-backend-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - DB_HOST=devflow-db
+      - DB_PORT=5432
+      - DB_NAME=${DB_NAME:-devflow_db}
+      - DB_USERNAME=${DB_USERNAME:-devflow_user}
+      - DB_PASSWORD=${DB_PASSWORD:-devflow_secure_password}
+      - REDIS_HOST=devflow-redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=${JWT_SECRET:-404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+      - JWT_EXPIRATION_MS=86400000
+    depends_on:
+      devflow-db:
+        condition: service_healthy
+      devflow-redis:
+        condition: service_started
+    restart: unless-stopped
+
+  devflow-db:
+    image: postgres:16-alpine
+    container_name: devflow-postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=${DB_NAME:-devflow_db}
+      - POSTGRES_USER=${DB_USERNAME:-devflow_user}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-devflow_secure_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-devflow_user} -d ${DB_NAME:-devflow_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  devflow-redis:
+    image: redis:7-alpine
+    container_name: devflow-redis-cache
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:

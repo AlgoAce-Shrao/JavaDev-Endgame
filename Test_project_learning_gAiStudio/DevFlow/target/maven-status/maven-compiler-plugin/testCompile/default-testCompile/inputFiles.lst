@@ -1,0 +1,5 @@
+/app/applet/src/test/java/com/devflow/controller/ProjectControllerTest.java
+/app/applet/src/test/java/com/devflow/service/TaskServiceTest.java
+/app/applet/src/test/java/com/devflow/controller/AuthControllerTest.java
+/app/applet/src/test/java/com/devflow/service/AuthServiceTest.java
+/app/applet/src/test/java/com/devflow/service/ProjectServiceTest.java

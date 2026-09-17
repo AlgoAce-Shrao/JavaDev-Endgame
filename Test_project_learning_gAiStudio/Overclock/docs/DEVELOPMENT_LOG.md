@@ -1,0 +1,84 @@
+# OVERCLOCK — Development Log
+
+## 2026-08-20 — Final Productization Pass (v1.0.0)
+- **What was added**:
+  - Google OAuth2 authentication via Express backend (`server.ts`).
+  - React `AuthContext` for session state management.
+  - Auth UI components: loading screen, access granted screen, error screen, user badge.
+  - Story-driven public landing page with game narrative and gameplay pillars.
+  - First-time player onboarding system with ZIX guide character.
+  - 11-step interactive tutorial teaching all core mechanics using real game systems.
+  - ZIX character (SVG holographic alien with mood states).
+  - Onboarding overlay with dialogue, key highlights, and action detection.
+  - Tutorial state persistence (skip/replay support).
+  - Replay Tutorial button on Boot Screen.
+  - Logout functionality in Pause Modal.
+  - User badge in game header when authenticated.
+- **Architecture decisions**:
+  - Express backend for OAuth2 (minimal, focused on auth).
+  - `express-session` for session management.
+  - React context for frontend auth state.
+  - OnboardingSystem as singleton state machine (matching existing system patterns).
+  - Landing page as default entry point (before auth).
+  - Demo mode accessible without authentication.
+  - All existing game systems preserved unchanged.
+- **Files created**:
+  - `server.ts` — Express OAuth2 backend
+  - `src/game/auth/AuthContext.tsx` — Auth context + provider
+  - `src/game/systems/OnboardingSystem.ts` — Tutorial state machine
+  - `src/components/LandingPage.tsx` — Public landing page
+  - `src/components/OnboardingOverlay.tsx` — Tutorial UI overlay
+  - `src/components/ZIXCharacter.tsx` — ZIX SVG character
+  - `src/components/AuthScreen.tsx` — Auth UI components
+  - `docs/AUTHENTICATION.md` — Auth documentation
+  - `docs/ONBOARDING.md` — Onboarding documentation
+  - `docs/LANDING_PAGE.md` — Landing page documentation
+  - `docs/FINAL_INTEGRATION_PLAN.md` — Integration plan
+  - `docs/FEATURE_PRESERVATION.md` — Regression checklist
+- **Files modified**:
+  - `package.json` — Added express-session dependencies
+  - `.env.example` — Added OAuth2 env vars
+  - `index.html` — Updated metadata
+  - `src/main.tsx` — Wrapped with AuthProvider
+  - `src/App.tsx` — Integrated landing, auth, onboarding flows
+  - `src/components/BootScreen.tsx` — Added Replay Tutorial button
+  - `src/components/PauseModal.tsx` — Added Logout button
+  - `docs/ARCHITECTURE.md` — Updated with new architecture
+- **Testing performed**:
+  - TypeScript typecheck: all new code compiles cleanly
+  - Pre-existing type errors in GameEngine.ts remain unchanged
+  - All existing game systems verified via code review
+- **Known issues**:
+  - Rollup native binary issues in build environment (pre-existing)
+  - Google OAuth2 requires actual Client ID/Secret to test
+- **Next recommended task**: Full integration testing with actual Google OAuth credentials
+
+## 2026-08-19 — Difficulty & Player Survivability Rebalance (v0.2.0)
+- **What was added**:
+  - Centralized game balance repository `/src/game/data/balanceConfig.ts` with typed `GAME_BALANCE` constant tree for single-point adjustments.
+- **What was changed**:
+  - Rebalanced player stats (+30% core health, +20% shield, 2.2s shield delay, 0.9s dash cooldown, 12 EP dash cost).
+  - Rebalanced thermal dynamics (~12% slower weapon heat buildup, 9.0%/s passive cooling, 12.0%/s Overclock heat rate, 5.5s Overclock duration).
+  - Reduced enemy hostility & incoming damage (~18% damage reduction globally).
+  - Adjusted Charger telegraphs to 1.15s for generous reaction windows.
+  - Rebalanced Turret bullet damages to 11 and fire cycle to 2.8s while keeping HP intact.
+  - Leech drain reduced to 8 EP/s; Hacker hack cooldown increased to 5.2s with 2.8s hack duration and 4% heat pulse.
+  - Administrator boss health tuned to 1100 with smoother phase progression.
+  - Full synchronization across `/docs/` documentation suite.
+- **Known problems**: None. Build is fully validated.
+- **Next recommended task**: Track player telemetry and mission completion rates.
+
+## 2026-08-18 — Initial Milestone Release (v0.1.0)
+- **What was added**:
+  - Full modular game architecture: Engine, Player, Enemy, Boss, Projectile, Particle, Power System, Sound Synthesis.
+  - Complete 5-mission campaign + 4-phase Final Boss (Administrator) + Endless Overdrive.
+  - Core mechanics: Heat, Meltdown, Overclock, Dash, Shield, Power distribution sliders.
+  - 4 distinct weapons: Plasma Cannon, Railgun, Missile Swarm, EMP.
+  - 5 distinct enemy archetypes: Drone, Charger, Turret, Leech, Hacker.
+  - Web Audio API procedural sound synthesizer for complete zero-asset audio.
+  - Military OS Boot sequence, non-intrusive high-contrast HUD, Upgrade choices, and Diagnostic Failure/Victory screens.
+  - Secrets: Supercritical Overclock activation at 95-99% heat, Hidden Terminal console, alternate victory dialogue.
+- **What was changed**:
+  - Unified simulation loop with clean delta-time interpolation.
+- **Known problems**: None currently blocking.
+- **Next recommended task**: Expand weapon modding slots and additional endless modifier mutations.

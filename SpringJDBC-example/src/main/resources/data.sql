@@ -1,0 +1,3 @@
+--insert into Student (roll,name,marks) values(101,'Udita',96);
+--insert into Student (roll,name,marks) values(102,'Dipi',98);
+--insert into Student (roll,name,marks) values(103,'Debi',23);

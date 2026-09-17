@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean id="parkrepo" class="org.smartParking.repository.ParkingLotRepository">
+            <property name="initialSlots" value="5"></property>
+    </bean>
+
+    <bean id="parkinghistory" class="org.smartParking.repository.ParkingHistory">
+
+    </bean>
+
+    <bean name="parkingService" class="org.smartParking.service.ParkingService">
+            <property name="parkingLotRepository" ref="parkrepo"></property>
+            <property name="parkingHistory" ref="parkinghistory"></property>
+    </bean>
+
+
+</beans>
+
+

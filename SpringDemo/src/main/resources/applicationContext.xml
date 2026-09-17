@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="alien" class="org.springdemo.Alien" >
+        <constructor-arg value="30" />
+        <constructor-arg ref="lappy"/>
+<!--        <property name="age" value="20"></property>-->
+
+<!--        value is for primitive objects-->
+<!--        ref is for reference objects-->
+
+    </bean>
+
+    <bean id="lappy" class="org.springdemo.Laptop"></bean>
+</beans>
