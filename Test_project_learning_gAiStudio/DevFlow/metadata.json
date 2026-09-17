@@ -1,6 +1,0 @@
-{
-  "name": "DevFlow - Java Spring Boot Backend API",
-  "description": "DevFlow developer task and incident management platform built with Java 21, Spring Boot 3, Spring Data JPA, PostgreSQL, Spring Security, JWT, Redis, Bean Validation, OpenAPI/Swagger, Actuator, JUnit 5, and Docker.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

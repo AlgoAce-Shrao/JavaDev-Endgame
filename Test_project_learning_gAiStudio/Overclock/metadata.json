@@ -1,6 +1,0 @@
-{
-  "name": "OVERCLOCK",
-  "description": "Fast-paced browser combat roguelite where piloting the experimental VX-01 beyond its thermal limits unleashes overwhelming power.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
